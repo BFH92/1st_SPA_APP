@@ -153,7 +153,7 @@ const PageList = (argument = "", results = 9, platforms ="") => {
     `;
 
     preparePage();
-    pageContent.innerHTML += `<div> ${Button("showmore", "Show more")} </div>`;
+    pageContent.innerHTML += `<div class="grid-3"> ${Button("showmore", "Show more")} </div>`;
   };
 
   render();

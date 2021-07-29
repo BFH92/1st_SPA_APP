@@ -1,5 +1,5 @@
 const Button = (id, text) => {
-  return `<button id="${id}">${text}</button>`;
+  return `<button class="${id}" id="${id}">${text}</button>`;
 };
 
 const linuxImg = `<?xml version="1.0" encoding="UTF-8"?>
