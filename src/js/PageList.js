@@ -42,8 +42,8 @@ const PageList = (argument = "", results = 9, platforms ="") => {
   `
   let inputArgument = argument;
   const publishers = [];
-  let startDate = "2008-01-01";
-  let endDate = "2021-06-29";
+  let startDate = "2020-01-01";
+  let endDate = "2021-12-31";
   const RAWG_API_KEY = `key=${process.env.RAWG_API}`;
 
   const preparePage = () => {
@@ -81,8 +81,15 @@ const PageList = (argument = "", results = 9, platforms ="") => {
               });
             //let platformView = `platforms : ${platformsList}`;
             let released = `released : ${article.released}`;
-            let vote = `votes : ${article.suggestions_count}`;
-            let rating = `rating : ${article.rating}`;
+            let vote;
+            if (article.suggestions_count != 0 && article.suggestions_count != undefined){
+            vote = `${article.suggestions_count} votes`;
+            }
+            let rating ="";
+            if (article.rating != 0 && article.rating != undefined){
+               rating = `rating : ${article.rating} / 5 - `;
+            }
+            
             let genresList = [];
 
             if (article.genres)
@@ -91,7 +98,12 @@ const PageList = (argument = "", results = 9, platforms ="") => {
                   ` <a href="#pagelist/&genres=${index.id}">${index.name}</a>`
                 );
               });
-            let genresView = `genres : ${genresList}`;
+            
+              let genresView ="";
+              console.log(`GENRE ${genresList}`)
+              if (genresList != ""&& genresList != undefined){genresView =`${genresList}`;}
+            
+            
             //console.log(genresView);
             articles += `
               
@@ -99,14 +111,14 @@ const PageList = (argument = "", results = 9, platforms ="") => {
                     <div class="img-cardGame" style="background-image: url('${article.background_image}');">     </div> 
                       <div class="hover-content">
                         <p>${released}</p>
-                        <p>${vote}</p>
-                        <p>${rating}</p>
-                        <p>${genresView}</p>
+                        <p>${rating} ${vote}</p>
+
+                        <p class="genres-list">${genresView}</p>
                       </div>
                 
                   
 
-                      <a href = "#pagedetail/${article.slug}"><h3 class="text-cardGame">${article.name}</h3> </a> 
+                      <a href = "#pagedetail/${article.slug}"><h3 class="text-cardGame margin">${article.name}</h3> </a> 
                       <p class="platforms text-cardGame"> ${platformsList.join(" ")}<p>
                 
                   </div>
@@ -121,7 +133,7 @@ const PageList = (argument = "", results = 9, platforms ="") => {
     if (platforms!=""){
       console.log("PLATFORM!")
     fetchList(
-      `https://api.rawg.io/api/games?page_size=${results}&ordering=-rating&parent_platforms=${platforms}&dates=${startDate},${endDate}&${RAWG_API_KEY}`,
+      `https://api.rawg.io/api/games?page_size=${results}&ordering=-released&parent_platforms=${platforms}&dates=${startDate},${endDate}&${RAWG_API_KEY}`,
       cleanedArgument
     );
     }else{

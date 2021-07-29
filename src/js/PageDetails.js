@@ -16,17 +16,23 @@ const preparePage = () => {
       <section class="page-detail">
         <div class="article">
           <div class="gameBG"></div>
-          <div class="head">
-            <h1 class="title head-rating"></h1>
+          <div class="head2">
+
+            <div class="title2"> <h2 class="head-rating"></h2></div>
             <div class="rating"> </div>
           </div>
-          <p class="release-date">Release date : <span></span></p>
           <div class="description text"></div>
-          <div class="platforms"></div>
-          <div class="developers"></div>
-          <div class="tags"></div>
-          <div class="genres"></div>
-          <div class="publishers"></div>
+          <div class="grid-4">
+            <div class="release-date"></div>
+            <div class="developers"></div>
+            <div class="platforms"></div>
+            <div class="publishers"></div>
+          </div>
+          <div class="grid-2">
+            <div class="genres subgrid-2"></div>
+            <div class="tags subgrid-2"></div>
+          </div>
+          
           <div class="stores"></div>
           <div class="trailer"> </div>
           <div class="video"> </div>
@@ -38,6 +44,10 @@ const preparePage = () => {
           </div>
         </div>
       </section>
+      <footer >
+        <div class="color-block margin">
+        </div>
+      </footer>
     `;
 
     preparePage();

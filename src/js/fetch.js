@@ -28,11 +28,11 @@ const  fetchGame = async (url, argument) => {
 
       let articleDOM = document.querySelector(".page-detail .article");
 
-      articleDOM.querySelector("h1.title").innerHTML = name;
-      articleDOM.querySelector(".release-date span").innerHTML = `<p class="subtitle"> Released date </plot>`;
-      articleDOM.querySelector(".release-date span").innerHTML = released;
+      articleDOM.querySelector("h2.head-rating").innerHTML = name;
+      articleDOM.querySelector(".release-date ").innerHTML = `<p class="subtitle"> Released date </plot>`;
+      articleDOM.querySelector(".release-date ").innerHTML += `<p>${released}</p>`;
       articleDOM.querySelector(".description").innerHTML = `<p class="subtitle"> Plot </plot>`;
-      articleDOM.querySelector(".description").innerHTML += description_raw;
+      articleDOM.querySelector(".description").innerHTML += `<p> ${description_raw}</p>`;
       console.log(website)
       articleDOM.querySelector(
         ".gameBG"
@@ -81,10 +81,10 @@ const  fetchGame = async (url, argument) => {
       //  "p.website"
       //).innerHTML = `website: <a href = "${website}"> website </a> `;
 
-      articleDOM.querySelector(".rating").innerHTML = `<p class="rating-votes ">${rating}/5 - ${suggestions_count}</p>`;
+      articleDOM.querySelector(".rating").innerHTML = `<p class="rating-votes ">${rating}/5 - ${suggestions_count} votes</p>`;
       
       if (stores[0] != undefined) {
-        articleDOM.querySelector(".stores").innerHTML = "<h2>BUY ON</h2>";
+        articleDOM.querySelector(".stores").innerHTML = `<h1 class="margin"> BUY ON</h1>`;
         stores.map((element) => {
           console.log(element.store.slug);
           articleDOM.querySelector(
@@ -113,7 +113,7 @@ const  fetchGame = async (url, argument) => {
       let results = response.results;
       if (results != undefined) {
         articleDOM.querySelector(".screenshotTitle").innerHTML +=
-          "<h2>SCREENSHOTS</h2>";
+          `<h1 class="margin">SCREENSHOTS</h1>`;
       }
       results.map((result) => {
         if (count < 4) {
@@ -168,7 +168,7 @@ const  fetchGame = async (url, argument) => {
                         <p>Rating : ${result.rating}</p>
                         <p>Genres : ${genresList.join(" ")}</p>
             </div>
-          <h5 class="text-cardGame"><a href = "#pagedetail/${result.slug}">${result.name}</a></h5>  
+          <h4 class="text-cardGame margin"><a href = "#pagedetail/${result.slug}">${result.name}</a></h5>  
           <p class="platforms text-cardGame">${platformsList.join(" ")}<p>
           </div>
       
@@ -177,7 +177,7 @@ const  fetchGame = async (url, argument) => {
       if (articles != "") {
         articleDOM.querySelector(
           ".similarGameTitle"
-        ).innerHTML = `<h2> SIMILAR GAMES </h2>`;
+        ).innerHTML = `<h1 class="margin"> SIMILAR GAMES </h1>`;
       }
       articleDOM.querySelector(".similarGame").innerHTML += articles;
       
@@ -203,7 +203,7 @@ const  fetchGame = async (url, argument) => {
       console.log(articleDOM.querySelector(".trailer"));
       console.log(articleDOM.querySelector(".video"));
       if (articles != "") {
-        articleDOM.querySelector(".trailer").innerHTML = `<h2> TRAILER </h2>`;
+        articleDOM.querySelector(".trailer").innerHTML = `<h1 class="margin"> TRAILER </h1>`;
       }
       articleDOM.querySelector(".video").innerHTML += articles;
     });

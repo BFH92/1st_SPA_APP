@@ -18,15 +18,37 @@ html {
 }
 
 input {
+  display: flex;
+  align-items: center;
+  place-items: center;
+  padding: 0 clamp(12px, 1.25vw, 25px);
+  width: 100%;
+  border: 1px solid white;
+  border-radius: clamp(25px, 2.5vw, 50px);
   border: none;
   background-image: none;
   background-color: #383441;
   box-shadow: none;
   color: #f3f2f5;
   place-items: center;
+  padding: 10px;
 }
 input:focus {
   outline: none;
+}
+
+.genres-list {
+  font-size: 80%;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 body {
@@ -37,25 +59,48 @@ body {
 }
 
 h1 {
-  color: #f3f2f5;
+  color: #c12530;
+  width: 100%;
+  text-align: left;
 }
 
 h2 {
-  color: #fa1414;
+  color: #f3f2f5;
+}
+
+.margin {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 h3 {
   color: #f3f2f5;
 }
 
+.color-block {
+  width: 12.5%;
+  min-width: 150px;
+  background-color: #c12530;
+  height: 8px;
+  margin-bottom: 25px;
+}
+
 p {
   color: #f3f2f5;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .head {
+  margin-top: 30px;
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
   justify-content: center;
+}
+
+.head2 {
+  margin-top: 30px;
+  display: grid;
 }
 
 .text {
@@ -72,6 +117,7 @@ p {
 .platform-filter {
   grid-row: 2/2;
   text-justify: auto;
+  margin-bottom: 10px;
 }
 
 .search {
@@ -84,8 +130,24 @@ p {
   grid-column: 3/3;
 }
 
+.title-head {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.title {
+  grid-row: 2/3;
+  width: 100%;
+}
+
+.title2 {
+  display: grid;
+  width: 100%;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
 .searchBar {
-  grid-row: 2/2;
+  grid-row: 2/3;
   width: 100%;
 }
 
@@ -126,7 +188,7 @@ a {
 .articles {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-content: center;
 }
 
@@ -147,12 +209,12 @@ a {
 .head-rating {
   vertical-align: baseline;
   justify-content: center;
+  grid-row: 2/3;
 }
 
 .rating {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
   width: 100%;
   justify-content: right;
   vertical-align: baseline;
@@ -162,7 +224,7 @@ a {
 .rating-votes {
   display: grid;
   font-weight: bold;
-  color: #fa1414;
+  color: #c12530;
   grid-row: 2/3;
 }
 
@@ -180,6 +242,7 @@ a {
 }
 .cardGame:hover > .hover-content {
   z-index: 10;
+  display: block;
 }
 
 .img-cardGame {
@@ -194,6 +257,7 @@ a {
   position: absolute;
   z-index: -1;
   top: 0;
+  display: none;
 }
 
 .text-cardGame {
@@ -218,7 +282,7 @@ a:active {
 }
 
 button {
-  background-color: #fa1414;
+  background-color: #c12530;
   /* Green */
   border: none;
   color: white;
